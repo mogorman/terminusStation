@@ -1,0 +1,102 @@
+        <style type="text/css">
+            body {
+                font-family: Roboto Condensed;
+                color: #333;
+            }
+            .page {
+                width: 1000px;
+                margin: 30px auto 0;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 24px;
+            }
+
+            .displays {
+                padding: 15px;
+                border: 10px solid #ccc;
+                background-color: #222;
+                border-radius: 30px;
+                box-shadow: 0 0 12px 4px #000 inset;
+	        position: absolute;
+	        left: 50%;
+	        margin-left: -600px;
+	        width: 1200px;
+            }
+            .flapper {
+                margin-bottom: 2px;
+                text-align: center;
+            }
+
+            .inputarea {
+                margin: 24px 0;
+            }
+
+            #typesomething,
+            #showme {
+                font-family: Roboto Condensed;
+                font-size: 18px;
+                padding: 14px;
+                background-color: #EEE;
+                color: #333;
+                border: 0;
+                height: 170px;
+	        display: none;
+            }
+
+            #typesomething {
+                width: 300px;
+            }
+
+            #showme:hover {
+                background-color: #DDD;
+            }
+
+            #showme:active {
+                background-color: #CCC;
+            }
+
+            div.inline {
+            display: inline-block;
+	    display2: inline-block;
+                vertical-align: bottom;
+            }
+
+            div.activity {
+                width: 12px;
+                height: 12px;
+                border-radius: 6px;
+                background-color: #250000;
+                position: relative;
+                top: 24px;
+                left: -1px;
+            }
+
+            div.activity.active {
+                background-color: #f00;
+            }
+        </style>
+	<h1>Terminus Station</h1>
+	<div> <h4><%= link "Flapper Version", to: "/departures" %> </h4></div>
+	<%= for station <- @stations do %>
+	    <div>
+	      <div><h4><%= station.name %></h4></div>
+	      <div>
+		<%= for departure <- station.departures do %>
+		    <div style="border:thin solid black">
+		      <div> Destination: <%= departure.destination %> </div>
+		      <div> Type: <%= departure.railType %> </div>
+		      <div> Departure: <%= departure.departure %> </div>
+		      <div> Predicted Departure: <%= departure.prediction_departure %> </div>
+		      <div> Train Number: <%= departure.train %> </div>
+		      <div> Track Name: <%= departure.track_name %> </div>
+		      <div> Track Code: <%= departure.track_code %> </div>
+		      <div> Status: <%= departure.status %> <%= departure.status_extra %>  <%= departure.alerts %> </div>
+		      <div> Station: <%= departure.station %> </div>
+		      <div> Schedule ID: <%= departure.schedule_id %> </div>
+		    </div>
+		<% end %>
+	      </div>
+	    </div>
+      <% end %>
