@@ -9,7 +9,7 @@ iex -S mix phx.server
 '''
 endpoints will be / and /departures after startup
 # demo available for view at 
-[TerminusStation [https://ts.rldn.net/]]
+[TerminusStation](https://ts.rldn.net/)
 # work not todo
 * Improve configuration support
 * handle change of day schedule polling
