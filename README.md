@@ -11,7 +11,7 @@ iex -S mix phx.server
 endpoints will be / and /departures after startup
 # demo available for view at 
 [TerminusStation](https://ts.rldn.net/)
-# work not todo
+# work not completed
 * Improve configuration support
 * handle change of day schedule polling
 * understand why i typically don't see which track code the train is boarding at
