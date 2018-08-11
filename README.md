@@ -2,6 +2,7 @@
 To start you will ned to configure postgresql for data storage and the api key in the application.ex for your mbta developer account
 ```bash
 mix deps.get
+cd assets && npm install && cd ..
 mix ecto.drop
 mix ecto.create
 mix ecto.migrate
