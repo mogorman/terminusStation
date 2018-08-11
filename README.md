@@ -6,7 +6,7 @@ mix ecto.drop
 mix ecto.create
 mix ecto.migrate
 iex -S mix phx.server 
-...
+```
 endpoints will be / and /departures after startup
 # demo available for view at 
 [TerminusStation](https://ts.rldn.net/)
