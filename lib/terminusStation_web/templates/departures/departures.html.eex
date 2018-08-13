@@ -80,7 +80,7 @@
 <h1>Terminus Station</h1>
 <div> <h1><%= link "Boring Version", to: "/" %> </h1></div>
 <div class="displays">
-  <%= for row <- @rows do %>
+  <%= for _row <- @rows do %>
       <div class="activity"></div><input class="display XS" />
   <% end %>
 </div>
