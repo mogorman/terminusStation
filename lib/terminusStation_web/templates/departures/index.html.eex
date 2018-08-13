@@ -92,6 +92,8 @@
 		      <div> Train Number: <%= departure.train %> </div>
 		      <div> Track Name: <%= departure.track_name %> </div>
 		      <div> Track Code: <%= departure.track_code %> </div>
+		      <div> Predicted Track Name: <%= departure.prediction_track_name %> </div>
+		      <div> Predicted Track Code: <%= departure.prediction_track_code %> </div>
 		      <div> Status: <%= departure.status %> <%= departure.status_extra %>  <%= departure.alerts %> </div>
 		      <div> Station: <%= departure.station %> </div>
 		      <div> Schedule ID: <%= departure.schedule_id %> </div>

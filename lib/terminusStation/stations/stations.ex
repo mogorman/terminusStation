@@ -45,7 +45,7 @@ defp format_route(route, newline) do
   List.to_string(:io_lib.format("~6s", [route.departure])) <>
   List.to_string(:io_lib.format(" ~4s", [route.train])) <>
   List.to_string(:io_lib.format(" ~-12s", [route.status])) <>
-  List.to_string(:io_lib.format(" ~-4s", [route.track_code])) <> newline
+  List.to_string(:io_lib.format(" ~3s", [route.prediction_track_code])) <> newline
   # route.railType <> " " <> route.time <> " " <>
   #   route.destination <> " " <> route.trainNumber <> " " <>
   #   route.trackNumber<> " "<> route.status <>"\\n"
@@ -95,6 +95,8 @@ def get_by_station(station) do
       on: schedule.trip_id == trip.trip_id,
       left_join: prediction in Prediction,
       on: schedule.trip_id == prediction.trip_id,
+      left_join: prediction_stop in Stop,
+      on: prediction_stop.stop_id == prediction.stop_id,
       left_join: vehicle in Vehicle,
       on: trip.trip_id == vehicle.trip_id,
       inner_join: stop in Stop,
@@ -112,6 +114,8 @@ def get_by_station(station) do
 	train: vehicle.label,
 	track_name: stop.platform_name,
 	track_code: stop.platform_code,
+	prediction_track_name: prediction_stop.platform_name,
+	prediction_track_code: prediction_stop.platform_code,
 	status: prediction.status,
 	status_extra: prediction.schedule_relationship,
 	station: stop.parent,
@@ -125,6 +129,7 @@ def get_by_station(station) do
   for station <- stations do
     train = if (station.train == nil), do: "", else: station.train
     track_code = if (station.track_code == nil), do: "TBD", else: station.track_code
+    prediction_track_code = if (station.prediction_track_code == nil), do: "TBD", else: station.prediction_track_code
     status = if (station.status == nil), do: "no data", else: station.status
     departure = station.departure |> Timex.Timezone.convert("America/New_York") |> Timex.format!("%H:%M", :strftime)
     prediction_departure = station.departure |> Timex.Timezone.convert("America/New_York") |> Timex.format!("%H:%M", :strftime)
@@ -134,6 +139,7 @@ def get_by_station(station) do
       alerts: get_alerts(station.schedule_id),
       train: train,
       track_code: track_code,
+      prediction_track_code: prediction_track_code,
       status: status
     }
   end
