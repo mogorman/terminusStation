@@ -11,8 +11,14 @@ config :terminusStation, TerminusStationWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
+  watchers: [
+    node: [
+      "node_modules/brunch/bin/brunch",
+      "watch",
+      "--stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #
@@ -48,14 +54,14 @@ config :logger, :console, format: "[$level] $message\n"
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
 
-#config :terminusStation, TerminusStation.Repo,
+# config :terminusStation, TerminusStation.Repo,
 #  adapter: EctoMnesia.Adapter
 #
-#config :ecto_mnesia,
+# config :ecto_mnesia,
 #  host: {:system, :atom, "MNESIA_HOST", Kernel.node()},
 #  storage_type: {:system, :atom, "MNESIA_STORAGE_TYPE", :ram_copies}
 #
-#config :mnesia, :dir, 'priv/mnesia'
+# config :mnesia, :dir, 'priv/mnesia'
 #
 
 # Configure your database
@@ -66,4 +72,3 @@ config :terminusStation, TerminusStation.Repo,
   database: "terminus_station_dev",
   hostname: "localhost",
   pool_size: 10
-

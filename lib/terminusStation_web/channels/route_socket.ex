@@ -1,6 +1,6 @@
 defmodule TerminusStation.RouteSocket do
   use Phoenix.Socket
-  channel "route:*", TerminusStation.RouteChannel
+  channel("route:*", TerminusStation.RouteChannel)
 
   ## Transports
   transport(:websocket, Phoenix.Transports.WebSocket)

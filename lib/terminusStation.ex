@@ -6,5 +6,5 @@ defmodule TerminusStation do
   Contexts are also responsible for managing your data, regardless
   if it comes from the database, an external API or others.
   """
-  #@todo put logic for urls here one day
+  # @todo put logic for urls here one day
 end

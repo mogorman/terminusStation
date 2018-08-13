@@ -25,13 +25,13 @@ defmodule TerminusStationWeb.ChannelCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(TerminusStation.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(TerminusStation.Repo, {:shared, self()})
     end
+
     :ok
   end
-
 end

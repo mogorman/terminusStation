@@ -6,9 +6,9 @@ defmodule TerminusStation.Mixfile do
       app: :terminusStation,
       version: "0.0.1",
       elixir: "~> 1.4",
-      elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers,
-      start_permanent: Mix.env == :prod,
+      elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
     ]
@@ -20,15 +20,17 @@ defmodule TerminusStation.Mixfile do
   def application do
     [
       mod: {TerminusStation.Application, []},
-      extra_applications: [:logger, :runtime_tools
-			   #, :ecto_mnesia
-			  ]
+      extra_applications: [
+        :logger,
+        :runtime_tools
+        # , :ecto_mnesia
+      ]
     ]
   end
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_),     do: ["lib"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
   #
@@ -40,7 +42,7 @@ defmodule TerminusStation.Mixfile do
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
-#      {:ecto_mnesia, "~> 0.9.1"}, # for development so you dont need sql
+      #      {:ecto_mnesia, "~> 0.9.1"}, # for development so you dont need sql
       {:server_sent_event_stage, "~> 0.1.0"},
       {:jason, "~> 1.0"},
       {:timex, "~> 3.3"},
@@ -62,7 +64,7 @@ defmodule TerminusStation.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end

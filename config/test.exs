@@ -9,14 +9,14 @@ config :terminusStation, TerminusStationWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-#config :terminusStation, TerminusStation.Repo,
+# config :terminusStation, TerminusStation.Repo,
 #  adapter: EctoMnesia.Adapter
 #
-#config :ecto_mnesia,
+# config :ecto_mnesia,
 #  host: {:system, :atom, "MNESIA_HOST", Kernel.node()},
 #  storage_type: {:system, :atom, "MNESIA_STORAGE_TYPE", :ram_copies}
 #
-#config :mnesia, :dir, 'priv/testmnesia'
+# config :mnesia, :dir, 'priv/testmnesia'
 #
 #
 
@@ -28,4 +28,3 @@ config :terminusStation, TerminusStation.Repo,
   database: "terminus_station_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
-
